@@ -120,6 +120,12 @@ function setupChart () {
             }
             table.addRow(row)
         }
+
+        // Wait for the chart to finish drawing before calling the getImageURI() method.
+        google.visualization.events.addListener(chart, 'ready', function () {
+            console.log('chart image: ' + chart.getImageURI())
+        })
+
         chart.draw(table, options)
     }
 
